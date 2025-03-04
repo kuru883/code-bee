@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Bee - Java</title>
+  <link rel="icon" href="Code_Bee_Circular.png">
+  <link rel="stylesheet" href="Styles/java.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <div id="particles">
+    <div class="particles-loading" role="status" aria-label="Loading particles background">
+      Loading...
+    </div>
+  </div>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">CODE BEE</span>
+        <button onclick="toggleSidebar()" id="toggle-btn" class="sideBtn" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+       <!-- home -->
+      <li>
+        <a href="index.html" title="Go Back to Home Page" id="homeBtn" class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <!-- lesson -->
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn" title="View Lessons" id="lessonBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40Z"/></svg>
+          <span>Lessons</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="javascript:void(0)" id="lesson1" onclick="selectLesson(1); return false;">Lesson 1</a></li>
+            <li><a href="javascript:void(0)" id="lesson2" onclick="selectLesson(2); return false;">Lesson 2</a></li>
+            <li><a href="javascript:void(0)" id="lesson3" onclick="selectLesson(3); return false;">Lesson 3</a></li>
+            <li><a href="javascript:void(0)" id="lesson4" onclick="selectLesson(4); return false;">Lesson 4</a></li>
+            <li><a href="javascript:void(0)" id="lesson5" onclick="selectLesson(5); return false;">Lesson 5</a></li>
+          </div>
+        </ul>
+      </li>
+        <!-- quiz -->
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn" title="Quizzes" id="quizButton" aria-label="Open quiz menu">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16zm-6-5H8v-2h4v2zm4-4H8V9h8v2z"/>
+          </svg>
+          <span>Quiz</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="quiz.html" id="startQuiz1">Java</a></li>
+          </div>
+        </ul>
+      </li>
+      <!-- about -->
+      <li id="aboutBtn">
+        <a href="#" title="About Java" onclick="showAbout(event)" class="dropdown-btn" aria-label="About Java">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm1 14h-2v-6h2v6z" />
+          </svg>
+          <span>About</span>
+        </a>
+      </li>
+  </nav>
+
+  <main>
+    <div class="container" id="aboutSection">
+      <h2>Welcome to Code Bee!</h2>
+      <p>
+        Code Bee is designed to help students and users gain in-depth knowledge of programming,
+        focusing on Java and VB.NET. This platform provides interactive lessons, coding challenges,
+        and a practical environment to improve problem-solving skills and confidence.
+      </p>
+  </div>
+  
+  <div class="container" id="aboutSection1">
+      <h2>Why Learn with Code Bee?</h2>
+      <p>
+        Code Bee enhances your coding skills by providing a structured and hands-on learning experience.
+        Whether you're a beginner or looking to refine your skills, our lessons ensure you grasp key
+        programming concepts in a fun and interactive way.
+      </p>
+  </div>
+  
+  <div class="container" id="aboutSection2">
+    <h2>Why Learn Java?</h2>
+    <p>
+      Java is one of the most popular programming languages in the world. Here's why you should learn it:
+    </p>
+   
+</div>
+
+<div class="container" id="aboutSection3">
+  <h2>Get Started</h2>
+  <p>
+    Begin your coding journey with Code Bee and unlock endless opportunities in software development!
+              Dive into our comprehensive lessons, tackle coding challenges, and watch your programming expertise soar.
+  </p>
+ </div>
+
+ <div id="java-editor-container" class="container" style="display: none;">
+  <h2>Java Editor</h2>
+  <p>This is where the Java editor interface would appear.</p>
+</div>
+
+<!-- Lesson Detail Section -->
+<div id="container" style="display: none; margin-top: 20px;">
+  <!-- Lesson 1 Content -->
+  <div id="lesson1-content" class="container" style="display: none;">
+    <h2>Lesson 1: Introduction to Java</h2>
+    <!-- Tutorial Section -->
+    <section class="topic tutorial">
+      <h3>Project Setup Tutorial</h3>
+      <video class="my-video" controls autoplay muted loop>
+        <source src="images for lesson/toturial.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <ol class="tutorial-steps">
+        <li>
+          <strong>Step 1:</strong> Open JCreator on your computer.
+        </li>
+        <li>
+          <strong>Step 2:</strong> Click <em>File → New → Project</em> and select <strong>Basic Java Application</strong>.
+        </li>
+        <li>
+          <strong>Step 3:</strong> Enter a Project Name (e.g., <code class="java-code">MyFirstProgram</code>) and click <em>Finish</em>.
+        </li>
+        <li>
+          <strong>Step 4:</strong> Right-click your project folder in the File View and select <em>New → Java File</em>.
+        </li>
+        <li>
+          <strong>Step 5:</strong> Name the file (e.g., <code class="java-code">HelloWorld</code>) and click <em>Finish</em>.
+        </li>
+      </ol>
+    </section>
+    <!-- Introduction Section -->
+    <section class="topic introduction">
+      <h3>Introduction to Java</h3>
+      <p>
+        Java is a versatile and powerful programming language used to develop everything from mobile apps to enterprise systems. In this lesson, you'll set up a project and write your first line of code.
+      </p>
+      <img
+        src="images for lesson/HELLO_WORLD.png"
+        alt="Hello World in Java"
+        style="width:100%; max-width:600px; border:2px solid var(--primary-cyan); border-radius:8px;"
+      />
+    </section>
+    <!-- Code Example Section -->
+    <section class="topic code-sample">
+      <h3>Displaying Text on the Screen</h3>
+      <p>
+        To print text on the screen, use the following command:
+      </p>
+      <pre>
+<code class="java-code">System.out.println("Hello world");</code>
+      </pre>
+      <p>
+        Compile your code with F7 and run it with F5.
+      </p>
+    </section>
+    <!-- Expected Output Section -->
+    <section class="topic output">
+      <h3>Expected Output</h3>
+      <img
+        src="images for lesson/helloworldoutput.png"
+        alt="Output Example"
+        style="width:100%; max-width:600px; border:2px solid var(--primary-cyan); border-radius:8px;"
+      />
+    </section>
+    <!-- Variable Declaration Section -->
+    <section class="topic declare-variable">
+      <h3>Declaring Variables in Java</h3>
+      <ol class="tutorial-steps">
+        <li>
+          <strong>Understanding Variables:</strong> Variables act as containers that hold data values.
+          <div class="image-area">
+            <img
+              src="images for lesson/declear variable.png"
+              alt="declere"
+              style="width:100%; max-width:600px; border:2px solid var(--primary-cyan); border-radius:8px;"
+            />
+          </div>
+        </li>
+        <li>
+          <strong>Syntax:</strong> Use the format:
+          <pre>
+<code class="java-code">dataType variableName = value;</code>
+          </pre>
+        </li>
+        <li>
+          <strong>Example – Integer:</strong>
+          <pre>
+<code class="java-code">int age = 20;</code>
+          </pre>
+        </li>
+        <li>
+          <strong>Example – Double:</strong>
+          <pre>
+<code class="java-code">double pi = 3.14;</code>
+          </pre>
+        </li>
+        <li>
+          <strong>Example – String:</strong>
+          <pre>
+<code class="java-code">String name = "John";</code>
+          </pre>
+        </li>
+      </ol>
+
+  </div>
+
+  <!-- Lesson 2 Content -->
+  <div id="lesson2-content" class="container" style="display: none;">
+  
+    <section class="container">
+      <h2>Lesson 2: if,Scanner,Boolean,While Loop and For Loop</h2>
+      <h1>Lesson 2 - Topic 1: Java Scanner Example in JCreator</h1>
+      <p>
+        This section demonstrates how to use the <code>Scanner</code> class in Java to receive user input in a console application using JCreator.
+      </p>
+      
+      <h2>Java Code</h2>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 2/scanner.png"
+          alt="declere"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+
+      
+      <h2>How the Scanner Works</h2>
+      <p>
+        The <code>Scanner</code> class is used to read user input from the keyboard. Here's a brief explanation of the key points:
+      </p>
+      <ul>
+        <li><strong>Creating a Scanner:</strong> <code>Scanner enter = new Scanner(System.in);</code> initializes a scanner to read from the standard input.</li>
+        <li><strong>Reading an Integer:</strong> <code>enter.nextInt();</code> waits for the user to input a number and then reads it.</li>
+        <li><strong>Closing the Scanner:</strong> It is a good practice to close the scanner with <code>enter.close();</code> when done.</li>
+      </ul>
+      
+      <h2>Using Java in JCreator</h2>
+      <ol>
+        <li><strong>Create a New Project:</strong> Open JCreator and start a new Java project.</li>
+        <li><strong>Add a New Class:</strong> Create a new class (for example, <code>Lop.java</code>) and paste the above code into it.</li>
+        <li><strong>Compile the Code:</strong> Use the compile button to compile your code and check for any errors.</li>
+        <li><strong>Run the Program:</strong> Run the application. The console will prompt you for input as specified in the code.</li>
+      </ol>
+      
+      <h2>Expected Output and Image Placeholders</h2>
+      
+      <h3>Step 1: Prompt for Value of a</h3>
+      <div>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/outputfora.png"
+            alt="a"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+      </div>
+      <p>
+        When the program runs, it displays: <code>Enter value for a:</code>. For example, if the user enters <strong>10</strong>, this value is stored in variable <code>a</code>.
+      </p>
+      
+      <h3>Step 2: Prompt for Value of b</h3>
+      <div>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/b.png"
+            alt="b"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+      </div>
+      <p>
+        Next, the program displays: <code>Enter value for b:</code>. If the user enters <strong>20</strong>, this value is stored in variable <code>b</code>.
+      </p>
+      
+      <h3>Step 3: Displaying the Result</h3>
+    
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/diff.png"
+            alt="diff"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <p>
+          The program calculates the difference using <code>diff = a - b</code>. For the inputs (10 and 20), the result is <strong>-10</strong>, which is then printed to the console.
+        </p>
+        
+        <p>
+          Follow these steps to understand and use the <code>Scanner</code> class in your Java programs with JCreator.
+        </p>
+      </section>
+      <div class="container">
+        <h1>Lesson 2 - Topic 2: If Statements - High and Low</h1>
+        <p>
+          In this section, we'll explore how the <code>if</code> statement works in Java. The <code>if</code> statement evaluates a condition and executes its block of code only if that condition is true.
+        </p>
+        <p>
+          Below are two examples demonstrating the <code>if</code> statement: one for a low scenario and another for a high scenario.
+        </p>
+        
+        <h2>How the <code>if</code> Statement Works</h2>
+        <p>
+          The <code>if</code> statement checks a condition:
+        </p>
+        <ul>
+          <li>If the condition is <strong>true</strong>, the code inside the block executes.</li>
+          <li>If the condition is <strong>false</strong>, the code inside the block is skipped.</li>
+        </ul>
+        
+        <h2>Example: Low Scenario</h2>
+  
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/LESS.png"
+            alt="less"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <h3>Output for Low Scenario</h3>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/LOW OUTPUT.png"
+            alt="less"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <p>
+          In the low scenario, both <code>a</code> and <code>b</code> are 8, so <code>diff</code> is 0. The condition <code>if (diff > 10)</code> is false and is skipped, while <code>if (diff &lt; 10)</code> is true, so the program prints <code>LESS</code>.
+        </p>
+        
+        <h2>Example: High Scenario</h2>
+        <h3>Code for High</h3>
+        
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/HIGH.png"
+            alt="high"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <h3>Output for High Scenario</h3>
+        <div class="image-area">
+          <img
+            src="images for lesson//Lesson 2/HIGH OUTPUT.png"
+            alt="high"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <p>
+          In the high scenario, <code>a</code> is set to 20 and <code>b</code> remains 8, so <code>diff</code> becomes 12. The condition <code>if (diff > 10)</code> is true, so the program prints <code>HIGH</code>, and the second condition <code>if (diff &lt; 10)</code> is false.
+        </p>
+        
+        <p>
+          This demonstrates how conditional execution works in Java using the <code>if</code> statement.
+        </p>
+      </div>
+      <section class="while-section">
+        <h1>Lesson 2 - Topic 3: While Loop</h1>
+        <p>
+          The <code>while</code> loop in Java repeatedly executes a block of code as long as a specified condition is <strong>true</strong>.
+          Below is an example that prints your name multiple times.
+        </p>
+        
+        <h2>Code Example</h2>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/while loop code.jpeg"
+            alt="while"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        
+        <p>
+          Explanation of the code:
+        </p>
+        <ul>
+          <li><strong>int ctr = 0;</strong> initializes the counter variable.</li>
+          <li><strong>while (ctr &lt; 10)</strong> is the condition. The loop runs as long as <code>ctr</code> is less than 10.</li>
+          <li><strong>System.out.println("Your Name");</strong> prints "Your Name" each time the loop runs.</li>
+          <li><strong>ctr = ctr + 1;</strong> increments <code>ctr</code> by 1 on each iteration, ensuring the loop eventually stops.</li>
+        </ul>
+        
+        <h2>Output</h2>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/while loop output.jpeg"
+            alt="while"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <p>
+          The program prints "Your Name" 10 times on separate lines in the console.
+        </p>
+      </section>
+  
+      <section class="For-section">
+        <h1>Lesson 2 - Topic 4: For Loop</h1>
+        <p>
+          The <code>for</code> loop in Java is often considered more convenient than a <code>while</code> loop when you know in advance how many times you want the loop to run.
+          It combines initialization, condition checking, and increment/decrement in one line.
+        </p>
+        
+        <h2>Code Example</h2>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/for loop code.png"
+            alt="for"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+    
+        
+        <p>
+          Explanation of the code:
+        </p>
+        <ul>
+          <li><strong>Initialization:</strong> <code>int c = 0;</code> sets the counter to 0.</li>
+          <li><strong>Condition:</strong> <code>c &lt; 10</code> means the loop runs as long as <code>c</code> is less than 10.</li>
+          <li><strong>Increment:</strong> <code>c++</code> increases <code>c</code> by 1 on each iteration.</li>
+          <li><strong>Body:</strong> <code>System.out.println("Your Name");</code> prints "Your Name" on each loop iteration.</li>
+        </ul>
+        <p>
+          Because all three elements (initialization, condition, and increment) are in one line, it's generally more concise and easier to read than a <code>while</code> loop for situations where the number of iterations is known.
+        </p>
+        
+        <h2>Output</h2>
+        <div class="image-area">
+          <img
+            src="images for lesson/Lesson 2/for loop output.png"
+            alt="for"
+            style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+          />
+        </div>
+        <p>
+          This program will print "Your Name" 10 times in the console, each on its own line.
+        </p>
+      </section>
+  
+  
+    </div>
+  
+      </div>
+     
+  <!-- Lesson 3 Content -->
+  <div id="lesson3-content" class="container" style="display: none;">
+    <h2>Lesson 3: Introduction to Applet:</h2>
+    
+    <section class="topic tutorial">
+      <h3>Applet Tutorial: How to Create a Java Applet</h3>
+      <video class="my-video" controls autoplay muted loop>
+        <source src="images for lesson/Lesson 3/tutorial-applet.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <ol class="tutorial-steps">
+        <li>
+          <strong>Step 1:</strong> Create a folder named <code>Java</code> on your Desktop or inside your preferred directory. This folder will store all your Java projects.
+        </li>
+        <li>
+          <strong>Step 2:</strong> Open JCreator on your computer.
+        </li>
+        <li>
+          <strong>Step 3:</strong> Click file => new => Blank WorkSpace. In the blank workspace of JCreator, locate the <code>Java</code> folder you created.
+        </li>
+        <li>
+          <strong>Step 4:</strong> Right-click in the blank workspace (or in the File View where your folder is visible).
+        </li>
+        <li>
+          <strong>Step 5:</strong> From the context menu, select <em>Project → Basic Java Applet</em>.
+        </li>
+
+        <li>
+          <strong>Step 6:</strong> Compile your project to ensure there are no errors.
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="container">
+      <h1>Lesson 3 - Topic 1: Label Example in a Java Applet</h1>
+      <p>
+        In this topic, we explore how to use a <strong>Label</strong> in a Java Applet. The code demonstrates how to calculate the sum of three integers and display the result using a Label.
+      </p>
+      
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/label code.png"
+          alt="label"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <h2>Explanation</h2>
+      <p>
+        The code starts by importing <code>java.awt.*</code> and <code>java.applet.*</code>. These packages are essential for creating graphical components and applets.
+      </p>
+      <p>
+        A <code>Label</code> named <code>lblsum</code> is declared and initialized as an empty label. Inside the <code>init()</code> method:
+      </p>
+      <ul>
+        <li>
+          Three integer variables <code>a</code>, <code>b</code>, and <code>c</code> are declared and assigned values.
+        </li>
+        <li>
+          The sum of these variables is calculated.
+        </li>
+        <li>
+          The <code>setText()</code> method updates the label to display the sum.
+        </li>
+        <li>
+          Finally, the label is added to the applet using the <code>add()</code> method, making it visible when the applet is loaded.
+        </li>
+      </ul>
+      
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/label output.png"
+          alt="label"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <p>
+        The output will show a label displaying the calculated sum, such as "the sum is: 7".
+      </p>
+    </section>
+    
+
+    <section class="container">
+      <h1>Lesson 3 - Topic 2: Creating and Using a Button in a Java Applet</h1>
+      <p>
+        In this topic, we'll learn how to add a button to a Java Applet, attach an action listener to it, and manage its behavior using the <code>paint</code> and <code>actionPerformed</code> methods.
+      </p>
+      
+      <h2>Code Overview</h2>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/code for button.png"
+          alt="button"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <h2>Explanation</h2>
+      <ol>
+        <li>
+          <strong>Importing <code>java.awt.event</code>:</strong>
+          <br>
+          This import statement is essential because it brings in the classes and interfaces needed for event handling. For instance, <code>ActionListener</code> and <code>ActionEvent</code>—which enable the applet to detect and respond to button clicks—are part of this package.
+        </li>
+        <li>
+          <strong>Declaring the Button:</strong>
+          <br>
+          The declaration <code>Button bHello = new Button("Click me");</code> creates a new button object with the label "Click me". This object is what users will interact with on the applet.
+        </li>
+        <li>
+          <strong>Adding the Button and Setting the Action Listener:</strong>
+          <br>
+          In the <code>init()</code> method, the button is added to the applet with <code>add(bHello);</code>. Immediately after, <code>bHello.addActionListener(this);</code> registers the current applet instance as the event listener for the button. This means that when the button is clicked, the applet's <code>actionPerformed</code> method will be called.
+        </li>
+        <li>
+          <strong>The <code>paint(Graphics g)</code> Method:</strong>
+          <br>
+          The <code>paint</code> method is automatically called by the system to render the applet. In this example, it's used to set the button's location on the screen with <code>bHello.setLocation(10,50);</code>. This positions the button at 10 pixels from the left and 50 pixels from the top of the applet window.
+        </li>
+        <li>
+          <strong>The <code>actionPerformed(ActionEvent e)</code> Method:</strong>
+          <br>
+          This method is required by the <code>ActionListener</code> interface. It defines what happens when an action event occurs—such as when the button is clicked. Here, it changes the label's text to "How you Doing?" and resizes the label to accommodate the new text.
+        </li>
+      </ol>
+      
+      <h2>Output</h2>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/button is not click.png"
+          alt="button"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/button is clicked.png"
+          alt="button"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <p>
+        Initially, the applet displays the button at the specified location without any label text. After clicking the button, the <code>actionPerformed</code> method is invoked, updating the label to display "How you Doing?".
+      </p>
+    </section>
+    
+
+
+    <section class="container">
+      <h1>Lesson 3 - Topic 3: Text Fields in a Java Applet</h1>
+      <p>
+        In this lesson, we explore how to use <strong>TextField</strong> components in a Java Applet to capture user input. The applet demonstrates the following:
+      </p>
+      <ul>
+        <li>Displaying text fields for entering a name and an age.</li>
+        <li>Using <code>getText()</code> to retrieve the user's input.</li>
+        <li>Updating a label with the input data when a button is clicked.</li>
+        <li>Positioning components within the applet using the <code>paint()</code> method.</li>
+      </ul>
+      
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/Textbox code.png"
+          alt="TextField"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <h2>Output Examples</h2>
+      <p><strong>Output 1:</strong> The initial applet display with empty fields and no greeting.</p>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/output1.png"
+          alt="TextField"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <p><strong>Output 2:</strong> The applet viewer showing the text fields pre-filled with "Bob" as the name and "18" as the age.</p>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/output2.png"
+          alt="TextField"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <p><strong>Output 3:</strong> After clicking the button, the label updates to display: <em>Hello Bob Your age is: 18</em>.</p>
+      <div class="image-area">
+        <img
+          src="images for lesson/Lesson 3/output3.png"
+          alt="TextField"
+          style="width:200%; max-width:800px; border:2px solid var(--primary-cyan); border-radius:8px;"
+        />
+      </div>
+      
+      <h2>Explanation</h2>
+      <ul>
+        <li>
+          <strong>TextField Components:</strong> Two text fields (<code>txtName</code> and <code>txtAge</code>) allow the user to input their name and age. The numbers (30 and 5) in their constructors specify their width in columns.
+        </li>
+        <li>
+          <strong>Retrieving Input:</strong> In the <code>actionPerformed</code> method, the <code>getText()</code> method is used to obtain the text entered by the user in each text field.
+        </li>
+        <li>
+          <strong>Updating the Label:</strong> When the button (<code>btnShow</code>) is clicked, the <code>actionPerformed</code> method concatenates the inputs into a greeting message and updates <code>lblgreet</code> using <code>setText()</code>. The label is then resized to fit the new text.
+        </li>
+        <li>
+          <strong>Component Positioning:</strong> The <code>paint(Graphics g)</code> method is used to set the location of the components. For example, <code>lblgreet.setLocation(10,100);</code> positions the greeting label at the coordinates (10, 100) in the applet.
+        </li>
+      </ul>
+    </section>
+    
+  </div>
+
+  <!-- Lesson 4 Content -->
+  <div id="lesson4-content" class="container" style="display: none;">
+    <h2>Lesson 4: Coming Soon</h2>
+    <p>
+      This lesson is currently under development. Please check back later for new content.
+    </p>
+  </div>
+
+  <!-- Lesson 5 Content -->
+  <div id="lesson5-content" class="container" style="display: none;">
+    <h2>Lesson 5: Coming Soon</h2>
+    <p>
+      This lesson is currently under development. Please check back later for new content.
+    </p>
+  </div>
+</div>
+</div>
+<!-- End of Responsive Container -->
+</div>
+  </main>
+
+  <script src="js/java.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

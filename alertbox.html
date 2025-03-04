@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert - Code Bee</title>
+    <link rel="icon" href="Code_Bee_Circular.png">
+    <link rel="stylesheet" href="Styles/common.css">
+    <link rel="stylesheet" href="Styles/alertbox.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="Code_Bee_Circular.png" alt="Code Bee Logo" class="logo">
+            <p class="logo-text">Code Bee</p>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        <form class="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" class="login-btn">Log In</button>
+        </form>
+    </div>
+
+    <div class="alert" id="alertBox">
+        Logged in successfully!
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Code Bee | Follow us on <a href="https://www.facebook.com/reignkaizen.bonsa" target="_blank">Facebook</a></p>
+    </footer>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            const alertBox = document.getElementById('alertBox');
+            alertBox.classList.add('show');
+
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

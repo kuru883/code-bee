@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Bee - Learn Java & VB.NET</title>
+  <link rel="icon" href="Code_Bee_Circular.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="Styles/index.css">
+</head>
+<body>
+  <header>
+    <div id="particles">
+      <div class="particles-loading" role="status" aria-label="Loading particles background">
+        Loading...
+      </div>
+    </div>
+    <div class="logo-container" id="Home">
+      <img src="Code_Bee_Circular.png" alt="Code Bee Logo" class="logo">
+      <p class="logo-text">Code Bee</p>
+  </div>
+  
+    <nav aria-label="Main navigation">
+      <a href="#home" class="nav-link active" id="active" aria-label="Home">Home</a>
+      <a href="#our-feature" class="nav-link" id="link3" aria-label="Features">Features</a>
+      <a href="#about" class="nav-link" id="link2" aria-label="About">About</a>
+      <a href="#contact" class="nav-link" id="link4" aria-label="Contact">Contact</a>
+      <a href="login.html"><button id="loginBtn" aria-label="Login">Login</button></a>
+    </nav>
+
+    <div class="hamburger-menu" id="hamburger">
+      <button id="hamburgerBtn">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="content">
+    <span class="blur"></span>
+    <span class="blur"></span>  
+    <h4 id="userName" class="user-name" >Hello, Users</h4>
+    <h1>Welcome to <span>Code Bee</span></h1>
+    <p>Your gateway to mastering Java and VB.NET.</p>
+    <button id="getStarted" onclick="scrollToFeatures()">Get Started</button>
+  </div>
+
+  <!-- Our Feature Section -->
+  <div class="container" id="our-feature">
+    <h2 class="feature-heading">OUR FEATURES</h2>
+    <div class="card java-card">
+      <div class="icon">☕</div>
+      <h3>Java</h3>
+      <p>Learn and practice Java programming. Click below to get started.</p>
+      <a href="java.html" target="_blank">Start Now →</a>
+    </div>
+    <div class="card vbnet-card">
+      <div class="icon">💻</div>
+      <h3>VB.NET</h3>
+      <p>Learn and practice VB.NET programming. Click below to get started.</p>
+      <a href="DOTNET.html" target="_blank">Start Now →</a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="container" id="about">
+    <h2 class="feature-heading">About Code Bee</h2>
+    <div class="about-content">
+      <div class="about-card research-project">
+        <div class="icon">🎓</div>
+        <h3>Research Project</h3>
+        <p>Code Bee is a research-based educational platform developed by Reign Kaizen D. Bonsa, designed to revolutionize the way students learn programming languages.</p>
+      </div>
+      
+      <div class="about-card research-purpose">
+        <div class="icon">🎯</div>
+        <h3>Research Purpose</h3>
+        <ul>
+          <li>Enhancing programming education through interactive learning</li>
+          <li>Making coding concepts more accessible to beginners</li>
+          <li>Providing practical, hands-on experience in programming</li>
+          <li>Creating an engaging learning environment for students</li>
+        </ul>
+      </div>
+
+      <div class="about-card features">
+        <div class="icon">💡</div>
+        <h3>Features</h3>
+        <ul>
+          <li>Structured lessons for both Java and VB.NET</li>
+          <li>Interactive coding exercises</li>
+          <li>Real-time feedback and assessment</li>
+          <li>User-friendly interface for better learning experience</li>
+        </ul>
+      </div>
+
+      <div class="about-card developer">
+        <div class="icon">👨‍💻</div>
+        <h3>About the Developer</h3>
+        <p><a href="https://www.facebook.com/reignkaizen.bonsa" target="_blank" class="developer-link">Reign Kaizen D. Bonsa</a></p>
+        <p>Developer</p>
+      </div>
+
+      <div class="about-card researcher">
+        <div class="icon">📄</div>
+        <h3>About the Researchers</h3>
+        <p><a href="https://www.facebook.com/jarnie.ranas.77" target="_blank" class="researcher-link">Jarnie Ranas</a></p>
+        <p><a href="https://www.facebook.com/profile.php?id=100010585953093" target="_blank" class="researcher-link">Riezel Solinas</a></p>
+        <p>Researchers</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container" id="footer">
+    <span class="blur" id="blur1"></span>
+    <span class="blur" id="blur2"></span>
+    <div class="column">
+        <div class="logo">
+            <img src="Code_Bee_Circular.png">
+        </div>
+        <p>
+          Helping learners master programming with expert guidance and hands-on experience.
+        </p>
+        <div class="socials">
+            <!-- <a href="#"><i class="ri-mail-line"></i></a> -->
+            <a href="https://www.facebook.com/reignkaizen.bonsa"><i class="ri-facebook-fill"></i></a>
+            <!-- <a href="#"><i class="ri-twitter-line"></i></a> -->
+        </div>
+    </div>
+    <div class="column">
+        <h4>About Us</h4>
+        <a href="#" id="missionLink">Our Mission</a>
+        <a href="#" id="workLink">How CODE BEE Works</a>
+        <a href="#" id="teamLink">Meet the Team</a>
+    </div>
+    <div class="column">
+        <h4>Contact</h4>
+        <a href="#" id="contactLink">Contact Us</a>
+        <a href="#" id="privacyLink">Privacy Policy</a>
+        <a href="#" id="termsLink">Terms & Conditions</a>
+    </div>
+  
+    </footer>
+
+
+    <div class="copyright">
+      Copyright © 2025 Code Bee. All Rights Reserved.
+  </div>
+
+  <main>
+
+  </main>
+
+  <script src="js/index.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAVA Quiz - Code Bee</title>
+  <link rel="icon" href="Code_Bee_Circular.png">
+  <link rel="stylesheet" href="Styles/common.css">
+  <link rel="stylesheet" href="Styles/quizstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  
+  <!-- Prism.js CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  
+  <!-- Prism.js Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  
+  <!-- Prism.js Java Language Support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  
+  <!-- Prism.js Line Numbers Plugin -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  <!-- Meta tags for sharing -->
+  <meta property="og:title" content="CodeBee JAVA Quiz">
+  <meta property="og:description" content="Test your knowledge with CodeBee's interactive quiz!">
+  <meta property="og:image" content="Code_Bee_Circular.png">
+  <meta property="og:url" content="">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="Code_Bee_Circular.png" alt="Code Bee Logo" class="logo">
+      <div class="logo-section">
+        <p class="logo-text">Code Bee <a href="java.html" class="header-back-btn">Back</a></p>
+      </div>
+    </div>
+  </header>
+
+  <div class="quiz-container">
+    <!-- Welcome Section -->
+    <div id="difficultyContainer" class="welcome-section">
+      <h1>Welcome to CodeBee JAVA Quiz!</h1>
+      <p class="welcome-text">Test your Java knowledge and challenge yourself with our interactive quiz. Choose a difficulty level that matches your expertise and get ready to learn!</p>
+      <div class="difficulty-info">
+        <div class="difficulty-card">
+          <i class="ri-easy-line"></i>
+          <h3>Easy</h3>
+          <p class="difficulty-description">Perfect for beginners and those new to Java programming.</p>
+          <ul>
+            <li>120 seconds time limit</li>
+            <li>3 tries per question</li>
+            <li>2 hints available</li>
+            <li>Basic Java concepts</li>
+            <li>Simple code completion</li>
+          </ul>
+          <div class="difficulty-tips">
+            <p>Recommended for:</p>
+            <ul>
+              <li>Java beginners</li>
+              <li>Students learning Java</li>
+              <li>Those who want to practice basics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="difficulty-card">
+          <i class="ri-medium-line"></i>
+          <h3>Medium</h3>
+          <p class="difficulty-description">For those with some Java experience looking for a challenge.</p>
+          <ul>
+            <li>60 seconds time limit</li>
+            <li>2 tries per question</li>
+            <li>1 hint available</li>
+            <li>Intermediate concepts</li>
+            <li>Moderate complexity</li>
+          </ul>
+          <div class="difficulty-tips">
+            <p>Recommended for:</p>
+            <ul>
+              <li>Intermediate Java developers</li>
+              <li>Students with basic Java knowledge</li>
+              <li>Those seeking moderate challenge</li>
+            </ul>
+          </div>
+        </div>
+        <div class="difficulty-card">
+          <i class="ri-hard-line"></i>
+          <h3>Hard</h3>
+          <p class="difficulty-description">The ultimate challenge for experienced Java programmers.</p>
+          <ul>
+            <li>45 seconds time limit</li>
+            <li>1 try per question</li>
+            <li>No hints available</li>
+            <li>Advanced concepts</li>
+            <li>Complex problem-solving</li>
+          </ul>
+          <div class="difficulty-tips">
+            <p>Recommended for:</p>
+            <ul>
+              <li>Experienced Java developers</li>
+              <li>Advanced students</li>
+              <li>Those seeking maximum challenge</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="select-text">Choose Your Challenge Level:</p>
+      <div class="difficulty-buttons">
+        <button class="btn" onclick="selectDifficulty('easy')" aria-label="Select easy difficulty">
+          <i class="ri-easy-line"></i> Start Easy
+        </button>
+        <button class="btn" onclick="selectDifficulty('medium')" aria-label="Select medium difficulty">
+          <i class="ri-medium-line"></i> Start Medium
+        </button>
+        <button class="btn" onclick="selectDifficulty('hard')" aria-label="Select hard difficulty">
+          <i class="ri-hard-line"></i> Start Hard
+        </button>
+      </div>
+    </div>
+    
+    <!-- Quiz Section -->
+    <div id="quizSection" class="hidden">
+      <div id="progressBarContainer">
+        <div id="progressBar"></div>
+      </div>
+      <div id="globalTimer">Time Left: <span id="timeLeft"></span> seconds</div>
+      <div id="questionArea">
+        <div id="questionText"></div>
+        <div class="input-group">
+          <input type="text" id="answerInput" placeholder="Type your answer for the blank" aria-label="Answer input field">
+          <button id="submitButton" aria-label="Submit answer">
+            <i class="ri-send-plane-fill"></i> Submit
+          </button>
+          <button id="hintButton" aria-label="Get hint">
+            <i class="ri-lightbulb-line"></i> Hint
+          </button>
+        </div>
+        <p id="feedback"></p>
+      </div>
+    </div>
+    
+    <!-- Result Section -->
+    <div id="resultSection" class="hidden">
+      <!-- Results content will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <script src="js/quiz.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

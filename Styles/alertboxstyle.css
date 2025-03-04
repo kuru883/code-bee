@@ -1,0 +1,83 @@
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4500;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff7f50;
+        }
+
+        /* Custom Alert Box Styles */
+        .alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 1000;
+        }
+
+        .alert.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(20px);
+        }
+        
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }

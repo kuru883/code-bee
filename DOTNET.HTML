@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Bee - VB.NET</title>
+  <link rel="icon" href="Code_Bee_Circular.png">
+  <link rel="stylesheet" href="Styles/dotnetstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <div id="particles">
+    <div class="particles-loading" role="status" aria-label="Loading particles background">
+      Loading...
+    </div>
+  </div>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">CODE BEE</span>
+        <button onclick="toggleSidebar()" id="toggle-btn" class="sideBtn" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+       <!-- home -->
+      <li>
+        <a href="index.html" title="Go Back to Home Page" id="homeBtn" class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <!-- lesson -->
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn" title="View Lessons" id="lessonBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40Z"/></svg>
+          <span>Lessons</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="javascript:void(0)" id="lesson1" onclick="selectLesson(1); return false;">Lesson 1</a></li>
+            <li><a href="javascript:void(0)" id="lesson2" onclick="selectLesson(2); return false;">Lesson 2</a></li>
+            <li><a href="javascript:void(0)" id="lesson3" onclick="selectLesson(3); return false;">Lesson 3</a></li>
+            <li><a href="javascript:void(0)" id="lesson4" onclick="selectLesson(4); return false;">Lesson 4</a></li>
+            <li><a href="javascript:void(0)" id="lesson5" onclick="selectLesson(5); return false;">Lesson 5</a></li>
+          </div>
+        </ul>
+      </li>
+        <!-- quiz -->
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn" title="Quizzes" id="quizButton" aria-label="Open quiz menu">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16zm-6-5H8v-2h4v2zm4-4H8V9h8v2z"/>
+          </svg>
+          <span>Quiz</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="vbquiz.html" id="startQuiz1">VB.NET</a></li>
+          </div>
+        </ul>
+      </li>
+      <!-- about -->
+      <li id="aboutBtn">
+        <a href="#" title="About VB.NET" onclick="showAbout(event)" class="dropdown-btn" aria-label="About VB.NET">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm1 14h-2v-6h2v6z" />
+          </svg>
+          <span>About</span>
+        </a>
+      </li>
+  </nav>
+
+  <main>
+    <div class="container" id="aboutSection">
+      <h2>Welcome to Code Bee!</h2>
+      <p>
+        Code Bee is designed to help students and users gain in-depth knowledge of programming,  
+        focusing on VB.NET and Java. This platform provides interactive lessons, coding challenges,  
+        and a practical environment to improve problem-solving skills and confidence.
+      </p>
+    </div>
+    
+    <div class="container" id="aboutSection1">
+      <h2>Why Learn with Code Bee?</h2>
+      <p>
+        Code Bee enhances your coding skills by providing a structured and hands-on learning experience.  
+        Whether you're a beginner or looking to refine your skills, our lessons ensure you grasp key  
+        programming concepts in a fun and interactive way.
+      </p>
+    </div>
+    
+    <div class="container" id="aboutSection2">
+      <h2>Why Learn VB.NET?</h2>
+      <p>
+        VB.NET is a powerful programming language that is widely used for developing Windows applications.  
+        Learning VB.NET equips you with essential skills for building user-friendly applications,  
+        automating tasks, and working within the .NET framework.
+      </p>
+    </div>
+    
+    <div class="container" id="aboutSection3">
+      <h2>Get Started</h2>
+      <p>
+        Begin your coding journey with Code Bee and unlock endless opportunities in software development!  
+        Dive into our comprehensive lessons, tackle coding challenges, and watch your programming expertise soar.
+      </p>
+    </div>
+    
+
+
+
+
+    
+<!-- Lesson Detail Section -->
+<div id="container" style="display: none; margin-top: 20px;">
+  <!-- Lesson 1 Content -->
+  <div id="lesson1-content" class="container" style="display: none;">
+    <div class="lesson-header">
+        <h2>Lesson 1: Introduction to VB.NET</h2>
+        <p class="lesson-description">
+            Get started with VB.NET programming by learning the basics of project setup, 
+            your first program, and variable declarations.
+        </p>
+    </div>
+
+    <!-- Tutorial Section -->
+    <section class="topic tutorial">
+        <div class="section-header">
+            <h3>Project Setup Tutorial</h3>
+            <p>Follow these steps to create your first VB.NET project:</p>
+        </div>
+        
+        <div class="video-container">
+            <video class="my-video" controls autoplay muted loop>
+                <source src="images for lesson/VB.net/lesson 1/VB.net tutorial.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="steps-container">
+            <ol class="tutorial-steps">
+                <li>
+                    <strong>Step 1:</strong> Open Microsoft Visual Studio 2010 on your computer.
+                </li>
+                <li>
+                    <strong>Step 2:</strong> Click <em>New project → windows form application</em>.
+                </li>
+                <li>
+                    <strong>Step 3:</strong> Enter a Name (e.g., <code class="vb-code">Example</code>) and click <em>Ok</em>.
+                </li>
+                <li>
+                    <strong>Step 4:</strong> Double-click your form to open the code editor.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="topic introduction">
+        <div class="section-header">
+            <h3>Introduction to VB.NET</h3>
+            <p>
+                VB.NET is a versatile and powerful programming language used to develop Windows applications 
+                and enterprise systems. In this lesson, you'll set up a project and write your first line of code.
+            </p>
+        </div>
+        
+        <div class="image-container">
+            <img
+                src="images for lesson/VB.net/lesson 1/helloworldvb (1).png"
+                alt="Hello World in VB.NET"
+                class="lesson-image"
+            />
+        </div>
+    </section>
+
+    <!-- Code Example Section -->
+    <section class="topic code-sample">
+        <div class="section-header">
+            <h3>Your First VB.NET Program</h3>
+            <p>Let's create a simple "Hello World" program:</p>
+        </div>
+        
+        <div class="code-container">
+            <pre><code class="vb-code">MessageBox.Show("Hello World")</code></pre>
+            <p class="code-note">Run the program by pressing F5 or clicking the Start button.</p>
+        </div>
+    </section>
+
+    <!-- Expected Output Section -->
+    <section class="topic output">
+        <div class="section-header">
+            <h3>Expected Output</h3>
+            <p>When you run the program, you should see this message box:</p>
+        </div>
+        
+        <div class="image-container">
+            <img
+                src="images for lesson/VB.net/lesson 1/helloworldvb (2).png"
+                alt="Output Example"
+                class="lesson-image"
+            />
+        </div>
+    </section>
+
+    <!-- Variable Declaration Section -->
+    <section class="topic declare-variable">
+        <div class="section-header">
+            <h3>Working with Variables in VB.NET</h3>
+            <p>Variables are containers that store data values in your program.</p>
+        </div>
+
+        <div class="image-container">
+            <img
+                src="images for lesson/VB.net/lesson 1/declearing variable (2).png"
+                alt="Variable Declaration Example"
+                class="lesson-image"
+            />
+        </div>
+
+        <div class="code-examples">
+            <div class="code-block">
+                <h4>Basic Syntax:</h4>
+                <pre><code class="vb-code">Dim variableName As DataType = value</code></pre>
+            </div>
+
+            <div class="code-block">
+                <h4>Common Examples:</h4>
+                <pre><code class="vb-code">' Integer variable
+Dim number As Integer = 100
+
+' Double variable (decimal numbers)
+Dim price As Double = 99.99
+
+' String variable (text)
+Dim message As String = "Hello World"</code></pre>
+            </div>
+        </div>
+
+        <div class="practice-section">
+            <h4>Practice Exercise</h4>
+            <p>Try creating variables of different types and displaying their values using MessageBox.Show().</p>
+        </div>
+    </section>
+  </div>
+
+  <!-- Lesson 2 Content -->
+  <div id="lesson2-content" class="container" style="display: none;">
+    <div class="lesson-header">
+        <h2>Lesson 2: Controls and Conditional Statements</h2>
+        <p class="lesson-description">
+            Learn how to work with Windows Forms controls and implement decision-making in your programs.
+        </p>
+    </div>
+
+    <!-- Controls Section -->
+    <section class="topic controls">
+        <div class="section-header">
+            <h3>Working with Controls</h3>
+            <p>Learn how to add and configure basic controls in your Windows Forms application.</p>
+        </div>
+
+        <div class="steps-container">
+            <h4>Adding Controls</h4>
+            <ol>
+                <li>
+                    <strong>Find the Toolbox:</strong> Locate the Button and Label controls in the toolbox.
+                    <div class="image-container">
+                        <img
+                            src="images for lesson/VB.net/lesson 2/btnandlbltoolbox.png"
+                            alt="Toolbox Controls"
+                            class="lesson-image"
+                        />
+                    </div>
+                </li>
+                <li>
+                    <strong>Configure Button:</strong> Rename the button to "btnShow" in the Properties window.
+                    <div class="image-container">
+                        <img
+                            src="images for lesson/VB.net/lesson 2/btnShow.png"
+                            alt="Button Properties"
+                            class="lesson-image"
+                        />
+                    </div>
+                </li>
+                <li>
+                    <strong>Configure Label:</strong> Rename the label to "lblOutput".
+                    <div class="image-container">
+                        <img
+                            src="images for lesson/VB.net/lesson 2/lblOutput.png"
+                            alt="Label Properties"
+                            class="lesson-image"
+                        />
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Button Click Event Section -->
+    <section class="topic button-event">
+        <div class="section-header">
+            <h3>Handling Button Clicks</h3>
+            <p>Learn how to respond to button clicks and update the label text.</p>
+        </div>
+
+        <div class="steps-container">
+            <ol>
+                <li>
+                    <strong>Add Event Handler:</strong> Double-click the button to create the click event handler.
+                    <div class="image-container">
+                        <img
+                            src="images for lesson/VB.net/lesson 2/double click btn to show the code.png"
+                            alt="Button Click Code"
+                            class="lesson-image"
+                        />
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="output-examples">
+            <div class="output-block">
+                <h4>Initial State</h4>
+                <div class="image-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/btnnotclicked.png"
+                        alt="Initial State"
+                        class="lesson-image"
+                    />
+                </div>
+                <p>When the program starts, the label is empty and waiting for user interaction.</p>
+            </div>
+
+            <div class="output-block">
+                <h4>After Button Click</h4>
+                <div class="image-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/btn clicked.png"
+                        alt="Button Clicked State"
+                        class="lesson-image"
+                    />
+                </div>
+                <p>The label updates when the button is clicked, showing the message.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditional Statements Section -->
+    <section class="topic conditionals">
+        <div class="section-header">
+            <h3>If Statements in VB.NET</h3>
+            <p>Learn how to make decisions in your code using If-ElseIf-Else statements.</p>
+        </div>
+
+        <div class="concept-explanation">
+            <h4>How If Statements Work</h4>
+            <ul>
+                <li>If the condition is <strong>True</strong>, the code inside the block executes</li>
+                <li>If the condition is <strong>False</strong>, the code inside the block is skipped</li>
+            </ul>
+        </div>
+
+        <div class="examples-container">
+            <div class="example-block">
+                <h4>Low Number Example</h4>
+                <div class="image-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/lesscode.png"
+                        alt="Low Number Code"
+                        class="lesson-image"
+                    />
+                </div>
+                <div class="output-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/lessoutput.png"
+                        alt="Low Number Output"
+                        class="lesson-image"
+                    />
+                </div>
+                <p class="explanation">
+                    When <code>number = 10</code>, the condition <code>if (number > 50)</code> is false and skipped, 
+                    while <code>else if (number < 50)</code> is true, so the program prints <code>LESS</code>.
+                </p>
+            </div>
+
+            <div class="example-block">
+                <h4>High Number Example</h4>
+                <div class="image-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/greatercode.png"
+                        alt="High Number Code"
+                        class="lesson-image"
+                    />
+                </div>
+                <div class="output-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/greateroutput.png"
+                        alt="High Number Output"
+                        class="lesson-image"
+                    />
+                </div>
+                <p class="explanation">
+                    When <code>number = 51</code>, the condition <code>if (number > 50)</code> is true, 
+                    so the program prints <code>HIGH</code>.
+                </p>
+            </div>
+
+            <div class="example-block">
+                <h4>Equal Number Example</h4>
+                <div class="image-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/equalcode.png"
+                        alt="Equal Number Code"
+                        class="lesson-image"
+                    />
+                </div>
+                <div class="output-container">
+                    <img
+                        src="images for lesson/VB.net/lesson 2/equaloutput.png"
+                        alt="Equal Number Output"
+                        class="lesson-image"
+                    />
+                </div>
+                <p class="explanation">
+                    When <code>number = 50</code>, the <code>else</code> condition is true, 
+                    so the program prints <code>The number is equal to 50</code>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="practice-section">
+        <h3>Practice Exercise</h3>
+        <p>Create a program that:</p>
+        <ol>
+            <li>Has a textbox for user input</li>
+            <li>Has a button to check the number</li>
+            <li>Uses If-ElseIf-Else to display different messages based on the input</li>
+        </ol>
+    </div>
+  </div>
+
+  <!-- Lesson 3 Content -->
+  <div id="lesson3-content" class="container" style="display: none;">
+    <h2>Lesson 3: Advanced VB.NET Concepts</h2>
+    
+    <!-- Error Handling Section -->
+    <section class="topic error-handling">
+        <h3>Error Handling in VB.NET</h3>
+        <p>
+            Error handling is crucial in VB.NET to manage and handle runtime errors gracefully. The Try-Catch block is the primary mechanism for this.
+        </p>
+        
+        <div class="code-example">
+            <h4>Try-Catch Block Syntax:</h4>
+            <pre><code class="vb-code">Try
+    ' Code that might cause an error
+    Dim result As Integer = 10 / 0  ' This will cause a division by zero error
+Catch ex As Exception
+    ' Handle the error here
+    MessageBox.Show("An error occurred: " & ex.Message)
+End Try</code></pre>
+        </div>
+
+        <div class="explanation">
+            <h4>How it works:</h4>
+            <ul>
+                <li>The <code>Try</code> block contains code that might cause an error</li>
+                <li>The <code>Catch</code> block handles any errors that occur</li>
+                <li><code>ex As Exception</code> captures the error details</li>
+                <li><code>End Try</code> marks the end of the error handling block</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Class Declaration Section -->
+    <section class="topic class-declaration">
+        <h3>Class Declaration in VB.NET</h3>
+        <p>
+            Classes are the foundation of Object-Oriented Programming in VB.NET. They allow you to create custom types that encapsulate data and behavior.
+        </p>
+        
+        <div class="code-example">
+            <h4>Class Declaration Syntax:</h4>
+            <pre><code class="vb-code">Public Class Student
+    ' Properties
+    Public Property Name As String
+    Public Property Age As Integer
+
+    ' Constructor
+    Public Sub New(name As String, age As Integer)
+        Me.Name = name
+        Me.Age = age
+    End Sub
+
+    ' Methods
+    Public Function GetInfo() As String
+        Return $"Name: {Name}, Age: {Age}"
+    End Function
+End Class</code></pre>
+        </div>
+
+        <div class="explanation">
+            <h4>Key Components:</h4>
+            <ul>
+                <li><code>Public Class</code> declares a class accessible from other files</li>
+                <li>Properties store data (Name, Age)</li>
+                <li>Constructor (New) initializes the object</li>
+                <li>Methods define behavior (GetInfo)</li>
+                <li><code>End Class</code> marks the end of the class definition</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Select Case Section -->
+    <section class="topic select-case">
+        <h3>Select Case Statement in VB.NET</h3>
+        <p>
+            The Select Case statement is an alternative to multiple If-ElseIf statements, making code more readable when dealing with multiple conditions.
+        </p>
+        
+        <div class="code-example">
+            <h4>Select Case Syntax:</h4>
+            <pre><code class="vb-code">Select Case grade
+    Case "A"
+        MessageBox.Show("Excellent!")
+    Case "B"
+        MessageBox.Show("Good job!")
+    Case "C"
+        MessageBox.Show("Fair")
+    Case Else
+        MessageBox.Show("Need improvement")
+End Select</code></pre>
+        </div>
+
+        <div class="explanation">
+            <h4>How it works:</h4>
+            <ul>
+                <li><code>Select Case</code> starts the statement</li>
+                <li>The expression to evaluate follows (grade in this example)</li>
+                <li>Each <code>Case</code> checks for a specific value</li>
+                <li><code>Case Else</code> handles any unmatched values</li>
+                <li><code>End Select</code> marks the end of the statement</li>
+            </ul>
+        </div>
+
+        <div class="practical-example">
+            <h4>Practical Example:</h4>
+            <pre><code class="vb-code">Dim day As Integer = 3
+Select Case day
+    Case 1
+        MessageBox.Show("Monday")
+    Case 2
+        MessageBox.Show("Tuesday")
+    Case 3
+        MessageBox.Show("Wednesday")
+    Case 4
+        MessageBox.Show("Thursday")
+    Case 5
+        MessageBox.Show("Friday")
+    Case 6, 7
+        MessageBox.Show("Weekend")
+    Case Else
+        MessageBox.Show("Invalid day")
+End Select</code></pre>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="topic practice">
+        <h3>Practice Exercise</h3>
+        <p>
+            Try creating a program that combines these concepts:
+        </p>
+        <ol>
+            <li>Create a class called "Calculator"</li>
+            <li>Add a method that performs division</li>
+            <li>Use Try-Catch to handle division by zero</li>
+            <li>Use Select Case to display different messages based on the result</li>
+        </ol>
+        
+        <div class="code-example">
+            <h4>Solution:</h4>
+            <pre><code class="vb-code">Public Class Calculator
+    Public Function Divide(a As Integer, b As Integer) As String
+        Try
+            Dim result As Double = a / b
+            Select Case result
+                Case Is > 10
+                    Return "Result is greater than 10"
+                Case Is > 5
+                    Return "Result is between 5 and 10"
+                Case Else
+                    Return "Result is less than or equal to 5"
+            End Select
+        Catch ex As Exception
+            Return "Error: " & ex.Message
+        End Try
+    End Function
+End Class</code></pre>
+        </div>
+    </section>
+</div>
+
+<!-- Lesson 4 Content -->
+<div id="lesson4-content" class="container" style="display: none;">
+  <h2>Lesson 4: Coming Soon</h2>
+  <p>
+    This lesson is currently under development. Please check back later for new content.
+  </p>
+</div>
+
+<!-- Lesson 5 Content -->
+<div id="lesson5-content" class="container" style="display: none;">
+  <h2>Lesson 5: Coming Soon</h2>
+  <p>
+    This lesson is currently under development. Please check back later for new content.
+  </p>
+</div>
+</div>
+</div>
+<!-- End of Responsive Container -->
+</div>
+  </main>
+
+  <script src="js/dotnet.js"></script>
+</body>
+</html>
